@@ -6,12 +6,12 @@
 
 CMD:admins(playerid)
 {
-    if(p_info[playerid][admin] < 1 || aduty[playerid] == false) return 1;
-    SendClientMessage(playerid, server, "Администрация онлайн:");
+	if(p_info[playerid][admin] < 1 || aduty[playerid] == false) return 1;
+	SendClientMessage(playerid, server, "Администрация онлайн:");
 	new status[32], str[144];
-    foreach(Player, i)
+	foreach(Player, i)
 	{
-	    if(p_info[i][admin] > 0)
+		if(p_info[i][admin] > 0)
 		{
 			if(aduty[i] == true) f(status, ""G"[На дежурстве]");
 			else f(status, ""R"[Не на дежурстве]");
