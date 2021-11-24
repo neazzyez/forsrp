@@ -1,0 +1,26 @@
+#define f(%1, format(%1,sizeof(%1),
+#define white 0xffffffff
+#define server 0x9966FFff
+#define R "{e04040}"
+#define G "{61cf61}"
+
+CMD:admins(playerid)
+{
+    if(p_info[playerid][admin] < 1 || aduty[playerid] == false) return 1;
+    SendClientMessage(playerid, server, "Администрация онлайн:");
+	new status[32], str[144];
+    foreach(Player, i)
+	{
+	    if(p_info[i][admin] > 0)
+		{
+			if(aduty[i] == true) f(status, ""G"[На дежурстве]");
+			else f(status, ""R"[Не на дежурстве]");
+			f(str, "[%d уровень] %s[%d] %s", p_info[i][admin], gp_name(i), i, status);
+			SendClientMessage(playerid, white, str);
+		}
+	}
+	return 1;
+}
+
+
+stock gp_name(playerid) { new pname[MAX_PLAYER_NAME]; GetPlayerName(playerid, pname, sizeof(pname)); return pname; }
